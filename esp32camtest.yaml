@@ -1,0 +1,56 @@
+esphome:
+  name: esp32camtest
+  platform: ESP32
+  board: esp32dev
+# ESP32-CAM
+esp32_camera:
+  name: espcam32test
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+
+
+# Flashlight
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+light:
+  - platform: binary
+    output: gpio_4
+    name: "cam test light"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "DangarSlow"
+  password: "nolfonzo"
+      # Optional manual IP
+      #  manual_ip:
+      #    static_ip: 192.168.20.53
+      #    gateway: 192.168.20.1
+      #    subnet: 255.255.255.0
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Test Fallback Hotspot"
+    password: "lGyKZTbfjOXb"
+
+captive_portal:
+    

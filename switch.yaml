@@ -1,0 +1,31 @@
+esphome:
+  name: switch
+  platform: ESP32
+  board: esp32dev
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+wifi:
+  ssid: "DangarSlow"
+  password: "nolfonzo"
+
+  # Optional manual IP
+  manual_ip:
+    static_ip: 192.168.20.47
+    gateway: 192.168.20.1
+    subnet: 255.255.255.0
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    pin: 25
+    name: "simple switch"    
